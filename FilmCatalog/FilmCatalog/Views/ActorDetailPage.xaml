@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmCatalog.ActorDetailPage"
+             xmlns:local="clr-namespace:FilmCatalog; assembly=FilmCatalog"
+             Title="{local:Translate ActorInformation}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="DeleteClicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="delete.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="Add" Clicked="EditClicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="edit.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <TableView Intent="Settings">
+            <TableRoot>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Padding="16,5" BackgroundColor="White">
+                            <Label Text="{local:Translate ActorName}" FontSize="Medium" />
+                            <StackLayout Spacing="30" Orientation="Horizontal">
+                                <Label Text="{Binding Actor.Name}" FontSize="Small"/>
+                                <Button x:Name="wikiButton" Text="{local:Translate Wiki}" Clicked="WikiButton_Clicked" WidthRequest="100"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                    <ViewCell>
+                        <StackLayout Padding="16,5" BackgroundColor="White">
+                            <Label Text="{local:Translate BirthDate}" FontSize="Medium" />
+                            <Label Text="{Binding Actor.Birthday, StringFormat='{}{0:dd/MM/yyyy}'}" FontSize="Small"/>
+                        </StackLayout>
+                    </ViewCell>
+                    <ViewCell>
+                        <StackLayout Padding="16,5" BackgroundColor="White">
+                            <Label Text="{local:Translate Biography}" FontSize="Medium" />
+                            <Label Text="{Binding Actor.Biography}" FontSize="Small"/>
+                        </StackLayout>
+                    </ViewCell>
+                    <ViewCell>
+                        <StackLayout Padding="16,5" BackgroundColor="White" HeightRequest="260">
+                            <Label Text="{local:Translate Films}" FontSize="Medium" />
+                            <ListView ItemsSource="{Binding Films}" ItemTapped="FilmTapped">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout>
+                                                <Label Text="{Binding Name}" FontSize="Small"/>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmCatalog.MenuPage"
+             xmlns:local="clr-namespace:FilmCatalog; assembly=FilmCatalog"
+             Title="{local:Translate Menu}">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Меню" BackgroundColor="LightGray">
+           
+            <ContentPage.Resources>
+                <ResourceDictionary>
+                    <x:Int32 x:Key="General">24</x:Int32>
+                    
+                    <Style TargetType="Label">
+                        <Setter Property="FontSize" Value="{StaticResource General}" />
+                    </Style>
+                    <Color x:Key="MenuBC">#eeeed4</Color>
+                    <Style TargetType="MasterDetailPage">
+                        <Setter Property="BackgroundColor" Value="{StaticResource MenuBC}"/>
+                    </Style>
+                </ResourceDictionary>
+            </ContentPage.Resources>
+            
+            <ContentPage.Content>
+                <StackLayout>
+                    <TableView Intent="Menu">
+                        <TableRoot>
+                            <TableSection>
+                                <ViewCell Tapped="Films_button_clicked">
+                                    <StackLayout Padding="10" Orientation="Horizontal">
+                                        <Image Source="films.png"/>
+                                        <Label x:Name="FilmsLabel" Text="{local:Translate FilmsLabel}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                                <ViewCell Tapped="Actors_button_clicked">
+                                    <StackLayout Padding="10" Orientation="Horizontal">
+                                        <Image Source="actors.png"/>
+                                        <Label x:Name="ActorsLabel" Text="{local:Translate ActorsLabel}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                                <ViewCell Tapped="Producers_button_clicked">
+                                    <StackLayout Padding="10" Orientation="Horizontal">
+                                        <Image Source="producers.png"/>
+                                        <Label x:Name="ProducersLabel" Text="{local:Translate ProducersLabel}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                                <ViewCell Tapped="Charts_button_Clicked">
+                                    <StackLayout Padding="10" Orientation="Horizontal">
+                                        <Image Source="charts.png"/>
+                                        <Label x:Name="ChartsLabel" Text="{local:Translate Infographics}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                                <ViewCell Tapped="Settings_button_Clicked" >
+                                    <StackLayout Padding="10" Orientation="Horizontal">
+                                        <Image Source="settings.png"/>
+                                        <Label x:Name="SettingsLabel" Text="{local:Translate Settings}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                                <ViewCell Tapped="Save_button_clicked">
+                                    <StackLayout Padding="10" Orientation="Horizontal">
+                                        <Image x:Name="saveImage" Source="save32.png"/>
+                                        <Label x:Name="SaveLabel" Text="{local:Translate Save}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </TableSection>
+                        </TableRoot>
+                    </TableView>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <ContentPage>
+            <ContentPage.Content>
+                <Label Text="Menu" VerticalOptions="CenterAndExpand"/>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

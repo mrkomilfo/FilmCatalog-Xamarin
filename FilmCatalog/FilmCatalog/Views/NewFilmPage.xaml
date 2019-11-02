@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmCatalog.NewFilmPage"
+             xmlns:local="clr-namespace:FilmCatalog; assembly=FilmCatalog"
+             Title="{local:Translate NewFilm}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="cancel.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="{local:Translate Save}" Clicked="Save_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="save.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="14" Padding="10">
+                <Label Text="{local:Translate FilmName}" FontSize="Medium" />
+                <Entry x:Name="nameEntry" FontSize="Small" />
+                <Label Text="{local:Translate Rating}" FontSize="Medium" />
+                <Entry x:Name="ratingEntry" FontSize="Small" />
+                <Label Text="{local:Translate Genre}" FontSize="Medium" />
+                <Entry x:Name="genreEntry" FontSize="Small" Margin="0" />
+                <Label Text="{local:Translate AgeLimit}" FontSize="Medium" />
+                <Entry x:Name="ageLimitEntry" FontSize="Small" />
+                <Label Text="{local:Translate Release}" FontSize="Medium" />
+                <Entry x:Name ="releaseEntry" FontSize="Small" />
+                <Label Text="{local:Translate Starring}" FontSize="Medium" />
+                <Editor x:Name="actorsEditor" HeightRequest="100" FontSize="Small" />
+                <Label Text="{local:Translate Producer}" FontSize="Medium" />
+                <Entry x:Name="producerEntry" FontSize="Small" />
+                <Label Text="{local:Translate Path}" FontSize="Medium" />
+                <Entry x:Name="pathEntry" FontSize="Small" />
+                <Label Text="IMDB:" FontSize="Medium" />
+                <Entry x:Name="IMDBEntry" FontSize="Small" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmCatalog.FilmsPage"
+             xmlns:local="clr-namespace:FilmCatalog; assembly=FilmCatalog"
+             Title="{local:Translate FilmsLabel}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddFilm_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="add.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="NameSort" Clicked="Sort_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="sort.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="Favourites" Clicked="Favourites_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="star.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" SearchButtonPressed="SearchBar_SearchButtonPressed" TextChanged="SearchBar_TextChanged"/>
+            <ListView x:Name="filmsListView"
+                HasUnevenRows ="True"
+                ItemsSource="{Binding Films}"
+                VerticalOptions="FillAndExpand" 
+                ItemTapped="FilmTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Name}" FontAttributes="Bold"
+                                    LineBreakMode="NoWrap"                                
+                                    FontSize="18" />
+                                    <Label Text="{Binding Release, StringFormat='({0})'}" 
+                                    LineBreakMode="NoWrap"                                
+                                    FontSize="18" />
+                                    <Label Text="{Binding Rating, StringFormat='IMDb: {0}'}" 
+                                    LineBreakMode="NoWrap"  
+                                    TextColor="Gray"
+                                    FontSize="16" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Genre}" 
+                                    LineBreakMode="NoWrap"                                
+                                    FontSize="16" />
+                                    <Label Text="{Binding AgeLimit, StringFormat=\{0\}'+'}"
+                                    LineBreakMode="NoWrap"      
+                                    TextColor="Gray"
+                                    FontSize="16" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

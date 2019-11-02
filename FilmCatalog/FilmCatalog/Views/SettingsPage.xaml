@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmCatalog.SettingsPage"
+             xmlns:local="clr-namespace:FilmCatalog; assembly=FilmCatalog"
+             xmlns:cp="clr-namespace:Amporis.Xamarin.Forms.ColorPicker;assembly=Amporis.Xamarin.Forms.ColorPicker"
+             Title="{local:Translate Settings}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10" WidthRequest="200">
+                <Label x:Name="header" Text="{local:Translate Language}" FontSize="Large" />
+                <Picker x:Name="languagePicker" SelectedIndexChanged="LanguagePicker_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>English</x:String>
+                        <x:String>Русский</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Label x:Name="AutosaveLabel" Text="{local:Translate Autosave}" FontSize="Large"/>
+                <Switch x:Name="saveSwitch" IsToggled="{Binding Settings.Autosave}" Toggled="SaveSwitch_Toggled"/>
+                <!-- <Label Text="{local:Translate ToolBarColor}" FontSize="Medium" Margin="0,30,0,10" />
+                <cp:ColorPickerMixer x:Name="ToolbarColorPicker" PropertyChanging="ToolbarColorPicker_PropertyChanging"/>
+                <Label Text="{local:Translate ToolBarTextColor}" FontSize="Medium" Margin="0,30,0,10" />
+                <cp:ColorPickerMixer x:Name="ToolbarTextColorPicker" PropertyChanged="ToolbarTextColorPicker_PropertyChanged"/>
+                <Label Text="{local:Translate ChartsColor}" FontSize="Medium" Margin="0,30,0,10" />
+                <cp:ColorPickerMixer Color="{Binding EditedColor}" />-->
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

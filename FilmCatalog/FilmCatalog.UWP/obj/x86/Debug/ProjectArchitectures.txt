@@ -1,0 +1,1 @@
+D:\study\Xamarin_Projects\FilmCatalog\FilmCatalog\FilmCatalog.UWP\FilmCatalog.UWP.csproj;x86

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmCatalog.NewActorPage"
+             xmlns:local="clr-namespace:FilmCatalog; assembly=FilmCatalog"
+             Title="{local:Translate NewActor}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="cancel.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="{local:Translate Save}" Clicked="Save_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="save.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content Title = "{local:Translate NewActor}">
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="{local:Translate FullName}" FontSize="Medium" />
+            <Entry x:Name="nameEntry" FontSize="Small"/>
+            <Label Text="{local:Translate BirthDate}" FontSize="Medium" />
+            <DatePicker x:Name="birthDatePicker" HorizontalOptions="Start" Format="D">
+                <DatePicker.MinimumDate>1/01/1850</DatePicker.MinimumDate>
+                <DatePicker.MaximumDate>1/01/2020</DatePicker.MaximumDate>
+            </DatePicker>
+            <Label Text="{local:Translate Biography}" FontSize="Medium" />
+            <Editor x:Name="biographyEditor" HeightRequest="120" FontSize="Small" />
+            <Label Text="{local:Translate Wiki}" FontSize="Medium" />
+            <Entry x:Name="wikiEntry" FontSize="Small" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

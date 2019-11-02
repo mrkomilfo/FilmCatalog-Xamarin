@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmCatalog.FilmDetailPage"
+             xmlns:local="clr-namespace:FilmCatalog; assembly=FilmCatalog"
+             Title="{local:Translate FilmInformation}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="DeleteClicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="delete.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="Add" Clicked="EditClicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="edit.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Horizontal" Padding="10">
+            <StackLayout Padding="0,16,10,0">
+                <Image x:Name="Poster" Source="DefaultFilm.png" WidthRequest="300" VerticalOptions="Start"/>
+                <Button x:Name="favouriteButton" Clicked="FavouriteButton_Clicked"/>
+                <Button x:Name="IMDBButton" Text="IMDb" Clicked="IMDBButton_Clicked"/>
+            </StackLayout>
+            <TableView Intent="Settings">
+                <TableRoot>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Padding="5,5,5,5" BackgroundColor="White">
+                                <Label Text="{local:Translate FilmName}" FontSize="Medium" />
+                                <Label Text="{Binding Name}" FontSize="Small"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Padding="5,5,5,5" BackgroundColor="White">
+                                <Label Text="{local:Translate Rating}" FontSize="Medium" />
+                                <Label Text="{Binding Rating}" FontSize="Small"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Padding="5,5,5,5" BackgroundColor="White">
+                                <Label Text="{local:Translate Genre}" FontSize="Medium" />
+                                <Label Text="{Binding Genre}" FontSize="Small"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Tapped="AgeLimitTapped">
+                            <StackLayout Padding="5,5,5,5">
+                                <Label Text="{local:Translate AgeLimit}" FontSize="Medium"/>
+                                <Label Text="{Binding AgeLimit, StringFormat=\{0\}'+'}" FontSize="Small"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Padding="5,5,5,5" BackgroundColor="White">
+                                <Label Text="{local:Translate Release}" FontSize="Medium" />
+                                <Label Text="{Binding Release}" FontSize="Small"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell Tapped="ProducerTapped">
+                            <StackLayout Padding="5,5,5,5">
+                                <Label Text="{local:Translate Producer}" FontSize="Medium"/>
+                                <Label Text="{Binding Producer}" FontSize="Small"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Padding="5,5,5,5" BackgroundColor="White">
+                                <Label Text="{local:Translate Starring}" FontSize="Medium" />
+                                <ListView x:Name="actorsListView" ItemsSource="{Binding Actors}" HeightRequest="260" ItemSelected="ActorSelected"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
